@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art Exhibition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        Virtual Art Exhibition
+    </header>
+
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('gallery') }}">Gallery</a>
+        <a href="#">Buy Artwork</a>
+        <a href="{{ url_for('login', artwork_id=1) }}">Login</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Welcome to the Virtual Art Exhibition</h1>
+            <p>Explore masterpieces and connect with amazing artists.</p>
+            <a href="{{ url_for('gallery') }}" class="hero-button">Explore Gallery</a>
+        </div>
+    </section>
+
+    <!-- Artworks Preview Section -->
+    <section class="gallery">
+        {% for art in artworks %}
+        <div class="card">
+            <img src="{{ art.image_url }}" alt="{{ art.title }}">
+            <h3>{{ art.title }}</h3>
+            <p>{{ art.description[:100] }}...</p>
+            <a href="{{ url_for('login', artwork_id=art.id) }}">
+                <button>Buy / Inquire</button>
+            </a>
+        </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Art Exhibition Gallery. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

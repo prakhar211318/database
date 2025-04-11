@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login to Buy Artwork</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>Login to Proceed</header>
+    <form action="{{ url_for('login', artwork_id=artwork_id) }}" method="POST" class="login-form">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <button type="submit">Get OTP & Submit</button>
+    </form>
+</body>
+</html>
